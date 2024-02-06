@@ -268,3 +268,10 @@ mvn clean verify
 
 **2-1 What are testcontainers?**
 They simply are java libraries that allow you to run a bunch of docker containers while testing. 
+
+
+**2-2 Document main.yml**
+
+
+**For what purpose do we need to push docker images?**
+So that the version we push is always the same as the one on docker.

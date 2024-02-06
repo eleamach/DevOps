@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+    backend:
+        container_name: backend #Name we want to give to the container
+        #build: ./Back/simpleapi/simple-api-student-main #PAth of the Dockerfile 
+        image: devops-backend
+        networks:
+         - app-network #Network used to connect back/db/httpd
+         
+        depends_on: 
+         - database #Can only be up if database is running
+        environment: 
+         - URL:'database:5432'
+         - USERNAME:'usr'
+         - PASSWORD:'pwd'
+         - DB:'db'
+        
+
+    database:
+        container_name: database #Name we want to give to the container
+        #build: ./Postgre #PAth of the Dockerfile 
+        image: devops-database
+        networks:
+         - app-network #Network used to connect back/db/httpd
+        volumes:
+         - /tmp/DevOps/bd:/var/lib/postgresql/data #Indicate where the volume is located
+        environment: 
+         - POSTGRES_PASSWORD:'pwd'
+         - POSTGRES_USER:'usr'
+         - POSTGRES_DB:'db'
+
+    httpd:
+        container_name: httpd #Name we want to give to the container
+        #build: ./httpserver  #PAth of the Dockerfile 
+        image: devops-httpd
+        ports: 
+         - '80:80' #Port used
+        networks:
+         - app-network #Network used to connect back/db/httpd
+        depends_on: 
+         - backend #Can only be up if database is running
+
+networks:
+    app-network: 

@@ -269,9 +269,87 @@ mvn clean verify
 **2-1 What are testcontainers?**
 They simply are java libraries that allow you to run a bunch of docker containers while testing. 
 
+<br>
 
 **2-2 Document main.yml**
+```bash
+name: CI devops 2023
+on:
+  #to begin you want to launch this job in main and develop
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
 
+jobs:
+  test-backend: 
+    runs-on: ubuntu-22.04
+    steps:
+     #checkout your github code using actions/checkout@v2.5.0
+      - uses: actions/checkout@v2.5.0
+
+     #do the same with another action (actions/setup-java@v3) that enable to setup jdk 17
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          cache: 'maven'
+          java-version: '17'
+          distribution: 'temurin'
+
+     #finally build your app with the latest command
+      - name: Build and test with Maven
+        run: mvn clean verify --file Back/simpleapi/simple-api-student-main/pom.xml
+
+      # define job to build and publish docker image
+
+
+
+  build-and-push-docker-image:
+    needs: test-backend
+    # run only when code is compiling and tests are passing
+    runs-on: ubuntu-22.04
+
+    # steps to perform in job
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2.5.0
+
+      - name: Login to DockerHub
+        run: docker login -u ${{ secrets.HUBUSERNAME }} -p ${{ secrets.HUBPASSWORD }}
+
+      - name: Build image and push backend
+        uses: docker/build-push-action@v3
+        with:
+          # relative path to the place where source code with Dockerfile is located
+          context: ./Back/simpleapi/simple-api-student-main
+          # Note: tags has to be all lower-case
+          tags:  ${{secrets.HUBUSERNAME}}/tp-devops-simple-api:latest
+          push: ${{ github.ref == 'refs/heads/main' }}
+
+      - name: Build image and push database
+        uses: docker/build-push-action@v3
+        with:
+          # relative path to the place where source code with Dockerfile is located
+          context: ./Postgre
+          # Note: tags has to be all lower-case
+          tags:  ${{secrets.HUBUSERNAME}}/tp-devops-bd:latest
+          push: ${{ github.ref == 'refs/heads/main' }}
+
+      - name: Build image and push httpd
+        uses: docker/build-push-action@v3
+        with:
+          # relative path to the place where source code with Dockerfile is located
+          context: ./httpserver
+          # Note: tags has to be all lower-case
+          tags:  ${{secrets.HUBUSERNAME}}/tp-devops-httpd:latest
+          push: ${{ github.ref == 'refs/heads/main' }}
+```
+ <br>
+
+**Why did we put needs: build-and-test-backend on this job? Maybe try without this and you will see!**
+It depends on the successful completion of the test-backend job before it can start
+<br>
 
 **For what purpose do we need to push docker images?**
 So that the version we push is always the same as the one on docker.
+<br>

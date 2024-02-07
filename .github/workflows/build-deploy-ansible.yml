@@ -1,0 +1,15 @@
+ame: CI devops 2023 - Build and Push ansible
+on:
+  workflow_run:
+    workflows: ["CI devops 2023 - Test ansible"]
+    types:
+      - completed
+
+jobs:
+  build-and-push-ansible:
+    runs-on: ubuntu-22.04
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Push ansible
+        uses: docker/build-push-action@v3
+        run: ansible-playbook -i /home/elea.machillot/Téléchargements/DevOps/ansible/inventories/setup.yml playbook.yml

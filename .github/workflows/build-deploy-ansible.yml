@@ -14,4 +14,5 @@ jobs:
         run: sudo pip3 install ansible
       
       - name: Run Ansible playbook
-        run: ansible-playbook -i ./ansible/inventories/setup.yml ./ansible/playbook.yml
+        run: ansible-playbook -i ansible/inventories/setup.yml ansible/playbook.yml
+

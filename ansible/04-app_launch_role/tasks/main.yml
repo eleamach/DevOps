@@ -10,3 +10,4 @@
       PASSWORD: "{{ postgres_password }}"  
       USERNAME: "{{ postgres_user }}" 
       DB: "{{ postgres_db }}"  
+      URL: "{{postgres_url}}:5432"

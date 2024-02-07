@@ -1,6 +1,6 @@
 - name: database 
   docker_container:  
-    name: database2  # Name of the Docker container 
+    name: database  # Name of the Docker container 
     image: eleamct/tp-devops-bd:latest  # Docker image 
     pull: yes  # Pull the latest version
     recreate: yes  # Recreate the container if it already exists

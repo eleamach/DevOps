@@ -6,7 +6,6 @@ all:
    postgres_db: "db"
    postgres_url: "database:5432"
    ansible_user: centos # Set the SSH user to 'centos'
-   ansible_ssh_private_key_file: /home/elea.machillot/Téléchargements/DevOps/ansible/id_rsa # Set the path to the SSH private key file
 
   # Define production hosts
  children:

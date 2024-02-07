@@ -450,3 +450,61 @@ main.yml de docker_role
     service: name=docker state=started # Ensure the service is started
     tags: docker # Assign a tag for this task
 ```
+
+<br>
+
+**Document your docker_container tasks configuration.**
+***Network***
+```bash
+- name: Create network
+  docker_network:
+    name: app-network #Network used to connect back/db/httpd
+```
+
+***Database***
+```bash
+- name: database 
+  docker_container:  
+    name: database  # Name of the Docker container 
+    image: eleamct/tp-devops-bd:latest  # Docker image 
+    pull: yes  # Pull the latest version
+    recreate: yes  # Recreate the container if it already exists
+    networks:  # Define the networks
+      - name: app-network  
+    volumes:  # Define volumes to mount in the container
+      - /tmp/DevOps/bd:/var/lib/postgresql/data  
+    env:  # Define environment variables for the container
+      POSTGRES_PASSWORD: "{{ postgres_password }}"  
+      POSTGRES_USER: "{{ postgres_user }}" 
+      POSTGRES_DB: "{{ postgres_db }}"  
+```
+
+***Backend***
+```bash
+- name: backend 
+  docker_container:  
+    name: backend  # Name of the Docker container 
+    image: eleamct/tp-devops-simple-api:latest  # Docker image to use for the container
+    pull: yes  # Pull the latest version 
+    recreate: yes  # Recreate the container if it already exists
+    networks:  # Define the networks 
+      - name: app-network  
+    env:  # Define environment variables for the container
+      PASSWORD: "{{ postgres_password }}"  
+      USERNAME: "{{ postgres_user }}" 
+      DB: "{{ postgres_db }}"  
+```
+
+***HTTPD***
+```bash
+- name: httpd  
+  docker_container: 
+    name: httpd  # Name of the Docker container 
+    image: eleamct/tp-devops-httpd:latest  # Docker image to use for the container
+    pull: yes  # Pull the latest version of the image 
+    recreate: yes  # Recreate the container if it already exists
+    networks:  # Define the networks 
+      - name: app-network  
+    ports:  # Define port mappings for the container
+      - '80:80'  
+```

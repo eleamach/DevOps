@@ -23,4 +23,25 @@ jobs:
           tags: ${{ secrets.HUBUSERNAME }}/tp-devops-simple-api:latest
           push: true
 
+      - name: Build and push front image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./devops-front-main
+          tags: ${{ secrets.HUBUSERNAME }}/front:latest
+          push: true
+
+      - name: Build and push postgre image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./Postgre
+          tags: ${{ secrets.HUBUSERNAME }}/db:latest
+          push: true
+      
+      - name: Build and push httpd image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./httpserver
+          tags: ${{ secrets.HUBUSERNAME }}/tp-devops-httpd:latest
+          push: true
+
       # Add steps to build and push other Docker images (database, httpd) here

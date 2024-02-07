@@ -1,6 +1,9 @@
 all:
   # Define SSH user and private key
  vars:
+   postgres_password: "pwd"
+   postgres_user: "usr"
+   postgres_db: "db"
    ansible_user: centos # Set the SSH user to 'centos'
    ansible_ssh_private_key_file: /home/elea.machillot/Téléchargements/DevOps/ansible/id_rsa # Set the path to the SSH private key file
 

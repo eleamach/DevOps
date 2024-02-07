@@ -1,0 +1,8 @@
+- name: front  
+  docker_container: 
+    name: front  # Name of the Docker container 
+    image: eleamct/front:latest  # Docker image to use for the container
+    pull: yes  # Pull the latest version of the image 
+    recreate: yes  # Recreate the container if it already exists
+    networks:  # Define the networks 
+      - name: app-network  

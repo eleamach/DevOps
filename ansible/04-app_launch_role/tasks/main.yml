@@ -1,12 +1,12 @@
 - name: backend 
-  docker_container:
-    name: backend
-    image: eleamct/tp-devops-simple-api:latest
-    pull: yes
-    recreate: yes
-    networks:
-      - name: app-network
-    env:
-      POSTGRES_PASSWORD: "{{ postgres_password }}"
-      POSTGRES_USER: "{{ postgres_user }}"
-      POSTGRES_DB: "{{ postgres_db }}"
+  docker_container:  
+    name: backend  # Name of the Docker container 
+    image: eleamct/tp-devops-simple-api:latest  # Docker image to use for the container
+    pull: yes  # Pull the latest version 
+    recreate: yes  # Recreate the container if it already exists
+    networks:  # Define the networks 
+      - name: app-network  
+    env:  # Define environment variables for the container
+      PASSWORD: "{{ postgres_password }}"  
+      USERNAME: "{{ postgres_user }}" 
+      DB: "{{ postgres_db }}"  

@@ -1,11 +1,11 @@
-- name: httpd
-  docker_container:
-    name: httpd
-    image: eleamct/tp-devops-httpd:latest
-    pull: yes
-    recreate: yes
-    networks:
-      - name: app-network
-    ports: 
-      - '80:80' #Port used
-    
+- name: httpd  
+  docker_container: 
+    name: httpd  # Name of the Docker container 
+    image: eleamct/tp-devops-httpd:latest  # Docker image to use for the container
+    pull: yes  # Pull the latest version of the image 
+    recreate: yes  # Recreate the container if it already exists
+    networks:  # Define the networks 
+      - name: app-network  
+    ports:  # Define port mappings for the container
+      - '80:80'  
+      - '8080:8080'

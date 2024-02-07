@@ -1,14 +1,14 @@
-- name: database
-  docker_container:
-    name: database
-    image: eleamct/tp-devops-bd:latest
-    pull: yes
-    recreate: yes
-    networks:
-      - name: app-network
-    volumes:
-      - /tmp/DevOps/bd:/var/lib/postgresql/data
-    env:
-      POSTGRES_PASSWORD: "{{ postgres_password }}"
-      POSTGRES_USER: "{{ postgres_user }}"
-      POSTGRES_DB: "{{ postgres_db }}"
+- name: database 
+  docker_container:  
+    name: database2  # Name of the Docker container 
+    image: eleamct/tp-devops-bd:latest  # Docker image 
+    pull: yes  # Pull the latest version
+    recreate: yes  # Recreate the container if it already exists
+    networks:  # Define the networks
+      - name: app-network  
+    volumes:  # Define volumes to mount in the container
+      - /tmp/DevOps/bd:/var/lib/postgresql/data  
+    env:  # Define environment variables for the container
+      POSTGRES_PASSWORD: "{{ postgres_password }}"  
+      POSTGRES_USER: "{{ postgres_user }}" 
+      POSTGRES_DB: "{{ postgres_db }}"  

@@ -7,3 +7,4 @@
    - role: './03-database_launch_role' # Define the 'database_launch_role' role and specify its path.
    - role: './04-app_launch_role' # Define the 'dapp_launch_role' role and specify its path.
    - role: './05-proxy_launch_role' # Define the 'procy_launch_role' role and specify its path.
+   - role: './06-front_role' # Define the 'procy_launch_role' role and specify its path.

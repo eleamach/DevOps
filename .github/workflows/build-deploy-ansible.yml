@@ -1,9 +1,9 @@
 ame: CI devops 2023 - Build and Push ansible
 on:
-  workflow_run:
-    workflows: ["CI devops 2023 - Test ansible last"]
-    types:
-      - completed
+  push:
+    branches:
+      - main
+      - develop
 
 jobs:
   build-and-push-ansible:

@@ -1,0 +1,10 @@
+all:
+  # Define SSH user and private key
+ vars:
+   ansible_user: centos # Set the SSH user to 'centos'
+   ansible_ssh_private_key_file: /home/elea.machillot/Téléchargements/DevOps/ansible/id_rsa # Set the path to the SSH private key file
+
+  # Define production hosts
+ children:
+   prod:
+     hosts: elea.machillot.takima.cloud # The hostname of the production server

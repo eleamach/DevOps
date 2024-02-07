@@ -96,7 +96,7 @@ $ sudo docker run -dit --name my-running-app --network app-network -p 80:80 my-a
 <br>
 <br>
 
-## Docker compose
+### Docker compose
 Build : 
 ```bash
 $ sudo docker compose build
@@ -266,7 +266,7 @@ mvn clean verify
 
 ## Questions
 
-**2-1 What are testcontainers?**
+**2-1 What are testcontainers?**  
 They simply are java libraries that allow you to run a bunch of docker containers while testing. 
 
 <br>
@@ -346,10 +346,52 @@ jobs:
 ```
  <br>
 
-**Why did we put needs: build-and-test-backend on this job? Maybe try without this and you will see!**
+**Why did we put needs: build-and-test-backend on this job? Maybe try without this and you will see!**  
 It depends on the successful completion of the test-backend job before it can start
 <br>
 
-**For what purpose do we need to push docker images?**
+**For what purpose do we need to push docker images?**  
 So that the version we push is always the same as the one on docker.
+<br>
+
+<br>
+<br>
+<br>
+
+
+
+
+# TP 3
+Ansible
+
+## Installation
+
+### Ping ansible
+```bash
+ansible -i /home/elea.machillot/Téléchargements/DevOps/ansible/hosts all -m ping --private-key=id_rsa -u centos
+```
+
+### Remote connection
+```bash
+ssh -i /home/elea.machillot/Téléchargements/id_rsa centos@elea.machillot.takima.cloud
+```
+
+## Questions
+<br>
+
+**3-1 Document your inventory**
+
+```bash 
+all:
+  # Define SSH user and private key
+ vars:
+   ansible_user: centos # Set the SSH user to 'centos'
+   ansible_ssh_private_key_file: /home/elea.machillot/Téléchargements/DevOps/ansible/id_rsa # Set the path to the SSH private key file
+
+  # Define production hosts
+ children:
+   prod:
+     hosts: elea.machillot.takima.cloud # The hostname of the production server
+```
+
 <br>

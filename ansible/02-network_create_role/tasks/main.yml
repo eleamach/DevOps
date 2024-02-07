@@ -1,0 +1,5 @@
+# database_role/tasks/main.yml
+
+- name: Create network
+  docker_network:
+    name: app-network #Network used to connect back/db/httpd

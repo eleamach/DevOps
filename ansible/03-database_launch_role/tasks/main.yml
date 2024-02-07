@@ -1,0 +1,14 @@
+- name: database
+  docker_container:
+    name: database
+    image: eleamct/tp-devops-bd:latest
+    pull: yes
+    recreate: yes
+    networks:
+      - name: app-network
+    volumes:
+      - /tmp/DevOps/bd:/var/lib/postgresql/data
+    env:
+      POSTGRES_PASSWORD: "{{ postgres_password }}"
+      POSTGRES_USER: "{{ postgres_user }}"
+      POSTGRES_DB: "{{ postgres_db }}"

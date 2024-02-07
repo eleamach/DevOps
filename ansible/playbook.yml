@@ -2,4 +2,8 @@
   gather_facts: false
   become: true
   roles:
-   - role: './docker_role' # Define the 'docker_role' role and specify its path.
+   - role: './01-docker_install_role' # Define the 'docker_install_role' role and specify its path.
+   - role: './02-network_create_role' # Define the 'network_create_role' role and specify its path.
+   - role: './03-database_launch_role' # Define the 'database_launch_role' role and specify its path.
+   - role: './04-app_launch_role' # Define the 'dapp_launch_role' role and specify its path.
+   - role: './05-proxy_launch_role' # Define the 'procy_launch_role' role and specify its path.

@@ -1,0 +1,5 @@
+# database_role/defaults/main.yml
+
+postgres_password: "pwd"
+postgres_user: "usr"
+postgres_db: "db"

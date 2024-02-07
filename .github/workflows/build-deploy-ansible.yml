@@ -1,4 +1,4 @@
-ame: CI devops 2023 - Build and Push ansible
+name: CI devops 2023 - Build and Push ansible
 on:
   push:
     branches:

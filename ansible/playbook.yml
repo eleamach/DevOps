@@ -1,7 +1,5 @@
-- hosts: all
+- hosts: all # Apply the 'docker_role' role to all hosts
   gather_facts: false
   become: true
-
-  tasks:
-   - name: Test connection
-     ping:
+  roles:
+   - role: './docker_role' # Define the 'docker_role' role and specify its path.

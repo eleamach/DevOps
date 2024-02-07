@@ -1,0 +1,41 @@
+  # Install device-mapper-persistent-data package using yum
+  - name: Install device-mapper-persistent-data
+    yum:
+      name: device-mapper-persistent-data # Package name
+      state: latest # Ensure the latest version is installed
+
+# Install lvm2 package using yum
+  - name: Install lvm2
+    yum:
+      name: lvm2 # Package name
+      state: latest # Ensure the latest version is installed
+
+# Add Docker repository using yum-config-manager
+  - name: add repo docker
+    command:
+      cmd: sudo yum-config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo # Add Docker repository
+
+# Install Docker package using yum
+  - name: Install Docker
+    yum:
+      name: docker-ce # Package name
+      state: present # Ensure the package is installed
+
+# Install python3 package using yum
+  - name: Install python3
+    yum:
+      name: python3 # Package name
+      state: present # Ensure the package is installed
+
+# Install Docker Python package using pip
+  - name: Install docker with Python 3
+    pip:
+      name: docker # Package name
+      executable: pip3 # Use pip3 executable
+    vars:
+      ansible_python_interpreter: /usr/bin/python3
+
+# Ensure Docker service is running
+  - name: Make sure Docker is running # Service name
+    service: name=docker state=started # Ensure the service is started
+    tags: docker # Assign a tag for this task

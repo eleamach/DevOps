@@ -1,9 +1,9 @@
 name: CI devops 2023 - Build and Push ansible
 on:
-  push:
-    branches:
-      - main
-      - develop
+  workflow_run:
+    workflows: ["CI devops 2023 - Build and Push Docker Image"]
+    types:
+      - completed
 
 jobs:
   build-and-push-ansible:

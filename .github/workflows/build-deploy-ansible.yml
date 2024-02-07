@@ -4,17 +4,14 @@ on:
     workflows: ["CI devops 2023 - Build and Push Docker Image"]
     types:
       - completed
-      
+
 jobs:
   build-and-push-ansible:
     runs-on: ubuntu-22.04
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Install Python and Ansible dependencies
-        run: |
-          sudo apt update
-          sudo apt install -y python3 python3-pip
-          sudo pip3 install ansible
+        run: sudo pip3 install ansible
       
       - name: Run Ansible playbook
-        run: ansible-playbook -i /home/elea.machillot/Téléchargements/DevOps/ansible/inventories/setup.yml /home/elea.machillot/Téléchargements/DevOps/ansible/playbook.yml
+        run: ansible-playbook -i ./ansible/inventories/setup.yml ./ansible/playbook.yml

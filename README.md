@@ -29,7 +29,7 @@ b23d5993a760   premierexercice   "docker-entrypoint.s…"   37 seconds ago   Up 
 $ sudo docker run -d --link suspicious_mirzakhani:db -p 8083:8080 adminer
 ```
 
-:check: Successfull adminer installation :   
+:white_check_mark: Successfull adminer installation :   
 ![alt text](adminer.png)
 
 <br>

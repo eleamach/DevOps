@@ -72,7 +72,7 @@ Runing the image for simpleapi :
 $ sudo docker run -it --rm -p 8081:8080 simpleapi 
 ```
 
-Succesfull Hello World ! from the API :  
+:white_check_mark: Succesfull Hello World ! from the API :  
 ![alt text](hello_world.png)
 
 <br>
@@ -90,7 +90,7 @@ Running the image for studentsimpleapi :
 $ sudo docker run -dit --rm --name springapi -p 8080:8080  --network app-network simple-api-student 
 ```
 
-Succesfull API with students now :  
+:white_check_mark: Succesfull API with students now :  
 ![alt text](local_students.png)
 
 
@@ -143,9 +143,9 @@ COPY to-be-copied /docker-entrypoint-initdb.d #Copy what is in to-be-copied onto
 <br>
 
 **<p style="color:pink">Why do we need a multistage build?</p>**
-- Useful to optimize Dockerfiles
+- Useful to ==optimize== Dockerfiles
 - Here it is important if we don't want to have a lot of Dockerfile going on
-- Structurate your docker
+- ==Structurate== your docker
 
 
 <br>
@@ -182,17 +182,17 @@ ENTRYPOINT java -jar myapp.jar
 <br>
 
 **<p style="color:pink">Why do we need a reverse proxy</p>**
-- Prevents malicious person from directly targeting your origin server using its IP address
-- Any communication coming from the outside has to go through the reverse proxy first
-- Load balancing
+- Prevents malicious person from directly ==targeting== your origin server using its IP address
+- Any communication coming from the outside has to ==go through== the reverse proxy first
+- ==Load balancing==
 
 
 <br>
 
 **<p style="color:pink">Why is docker-compose so important?</p>**
-- Running multi-container applications
-- Efficient development and deployment
-- Easy to manage services, networks, and volumes in a single, comprehensible YAML configuration file
+- Running ==multi-container== applications
+- ==Efficient== development and deployment
+- ==Easy to manage== services, networks, and volumes in a single, ==comprehensible== YAML configuration file
 
 
 <br>
@@ -322,7 +322,7 @@ mvn clean verify
 
 ## <p style="text-align:center; color:hotpink">Questions</p>
 **<p style="color:pink">2-1 What are testcontainers?</p>**
-They simply are java libraries that allow you to run a bunch of docker containers while testing. 
+They simply are ==java libraries== that allow you to run a bunch of docker containers while testing. 
 
 
 <br>
@@ -445,7 +445,7 @@ ssh -i /home/elea.machillot/Téléchargements/id_rsa centos@elea.machillot.takim
 
 
 ### <p style="color:pink">Finish product</p>
-On our server called centos@elea.machillot.takima.cloud at the port 80, we can now access to our front !!! :  
+:white_check_mark: On our server called centos@elea.machillot.takima.cloud at the port 80, we can now access to our front !!! :  
 ![alt text](serv_front_home.png)
 ![alt text](serv_front_students.png)
 

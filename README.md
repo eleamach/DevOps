@@ -29,7 +29,7 @@ b23d5993a760   premierexercice   "docker-entrypoint.s…"   37 seconds ago   Up 
 $ sudo docker run -d --link suspicious_mirzakhani:db -p 8083:8080 adminer
 ```
 
-Successfull adminer installation :
+:bulb: Successfull adminer installation :   
 ![alt text](adminer.png)
 
 <br>
@@ -72,7 +72,7 @@ Runing the image for simpleapi :
 $ sudo docker run -it --rm -p 8081:8080 simpleapi 
 ```
 
-Succesfull Hello World ! from the API :
+Succesfull Hello World ! from the API :  
 ![alt text](hello_world.png)
 
 <br>
@@ -90,7 +90,7 @@ Running the image for studentsimpleapi :
 $ sudo docker run -dit --rm --name springapi -p 8080:8080  --network app-network simple-api-student 
 ```
 
-Succesfull API with students now :
+Succesfull API with students now :  
 ![alt text](local_students.png)
 
 

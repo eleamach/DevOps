@@ -143,9 +143,9 @@ COPY to-be-copied /docker-entrypoint-initdb.d #Copy what is in to-be-copied onto
 <br>
 
 **<p style="color:pink">Why do we need a multistage build?</p>**
-- Useful to ==optimize== Dockerfiles
+- Useful to optimize Dockerfiles
 - Here it is important if we don't want to have a lot of Dockerfile going on
-- ==Structurate== your docker
+- Structurate your docker
 
 
 <br>
@@ -182,17 +182,17 @@ ENTRYPOINT java -jar myapp.jar
 <br>
 
 **<p style="color:pink">Why do we need a reverse proxy</p>**
-- Prevents malicious person from directly ==targeting== your origin server using its IP address
-- Any communication coming from the outside has to ==go through== the reverse proxy first
-- ==Load balancing==
+- Prevents malicious person from directly targeting your origin server using its IP address
+- Any communication coming from the outside has to go through the reverse proxy first
+- Load balancing
 
 
 <br>
 
 **<p style="color:pink">Why is docker-compose so important?</p>**
-- Running ==multi-container== applications
-- ==Efficient== development and deployment
-- ==Easy to manage== services, networks, and volumes in a single, ==comprehensible== YAML configuration file
+- Running multi-container applications
+- Efficient development and deployment
+- Easy to manage services, networks, and volumes in a single, comprehensible YAML configuration file
 
 
 <br>
@@ -322,7 +322,7 @@ mvn clean verify
 
 ## <p style="text-align:center; color:hotpink">Questions</p>
 **<p style="color:pink">2-1 What are testcontainers?</p>**
-They simply are ==java libraries== that allow you to run a bunch of docker containers while testing. 
+They simply are java libraries that allow you to run a bunch of docker containers while testing. 
 
 
 <br>
